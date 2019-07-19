@@ -22,7 +22,7 @@ func main() {
 
 	for typ, ks := range testkeys.Keys {
 		prf := "slimtrie-data-" + typ + "-"
-		MakeMarshaledData(prf+"%s", f.Ver, ks)
+		makeMarshaledData(prf+"%s", f.Ver, ks)
 	}
 }
 
@@ -52,7 +52,16 @@ func (c I32) GetEncodedSize(b []byte) int {
 	return 4
 }
 
-func MakeMarshaledData(fn string, defaultVer string, keys []string) {
+func makeMarshaledData(fn string, defaultVer string, keys []string) {
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("failed:", fn, defaultVer, r)
+		}
+	}()
+	makeData(fn, defaultVer, keys)
+}
+
+func makeData(fn string, defaultVer string, keys []string) {
 
 	type gv interface {
 		GetVersion() string
