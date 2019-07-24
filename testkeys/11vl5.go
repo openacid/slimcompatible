@@ -1,7 +1,7 @@
 package testkeys
 
 var (
-	testKeys11l5 = []string{
+	testKeys11vl5 = []string{
 		"abc",
 		"abcd",
 		"abcdx",
