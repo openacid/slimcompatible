@@ -2,6 +2,7 @@ package testkeys
 
 var (
 	Keys = map[string][]string{
+		"empty":    []string{},
 		"10ll16k":  testKeys10ll16k,
 		"10vl5":    testKeys10vl5,
 		"11vl5":    testKeys11vl5,
